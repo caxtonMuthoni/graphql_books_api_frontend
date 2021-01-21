@@ -1,0 +1,8 @@
+query ($search: String!){
+ searchBook(search: $search){
+  id
+  title
+  author
+  image
+}
+}

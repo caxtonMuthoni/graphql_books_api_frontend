@@ -1,0 +1,20 @@
+query($page: Int!) {
+ books(page: $page){
+   data{
+        id
+        title
+        author
+        image
+   }
+   paginatorInfo{
+      count
+      currentPage
+      firstItem
+      hasMorePages
+      lastItem
+      lastPage
+      perPage
+      total
+    }
+}
+}

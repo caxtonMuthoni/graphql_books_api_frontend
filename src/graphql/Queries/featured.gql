@@ -1,0 +1,23 @@
+query(
+  $featured: Boolean!
+  $page: Int!
+  ) {
+ featuredBooks(page:$page featured: $featured){
+   data{
+        id
+        title
+        author
+        image
+      }
+    paginatorInfo{
+      count
+      currentPage
+      firstItem
+      hasMorePages
+      lastItem
+      lastPage
+      perPage
+      total
+    }
+}
+}
