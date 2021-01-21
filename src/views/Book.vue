@@ -24,14 +24,15 @@
               </div>
               <div class="col-md-8 text-left">
                 <div class="mt-5">
-                  <strong class="mt-5 pt-5">{{ data.book.title }}</strong>
+                  <strong class="mt-5 pt-5">{{ data.book.title }}</strong> <br>
                   <span> &nbsp;</span>
-                  <span> Created at: {{ data.book.auther }}</span>
-                  <small>{{ data.book.created_at }}</small>
+                  <span class="mr-5 text-primary"> <b class="text-dark"> Authoured by:</b> {{ data.book.author }}</span>
+                  <span class="text-success"><b class="text-dark">Published at: </b><small>{{ data.book.created_at }}</small></span>
                   <p class="my-2">{{ data.book.description }}</p>
-                  <span>Category: {{ data.book.category.name }}</span>
+                  <span class="mr-5 text-primary"><b class="text-dark">Category:</b> {{ data.book.category.name }}</span>
+                  <span class="mx-5 text-success"><b class="text-dark">Published by:</b> {{ data.book.user.name }}</span>
                 </div>
-                <div class="mt-5">
+                <div class="mt-5" v-if="authUserId">
                   <a
                     :href="data.book.link"
                     target="_blank"
@@ -41,6 +42,7 @@
                     <i class="fas fa-link"></i> view
                   </a>
                   <a
+                    v-if="authUserId === data.book.user.id"
                     href="#"
                     @click.prevent="showEditModal"
                     class="btn btn-info btn-sm mx-3"
@@ -48,6 +50,7 @@
                   >
 
                   <a
+                    v-if="authUserId === data.book.user.id"
                     href=""
                     @click.prevent="deleteBook"
                     class="btn btn-danger btn-sm"
@@ -107,10 +110,21 @@ export default {
       bookQuery,
       id: 1,
       title: "",
+      authUserId: null
     };
   },
 
+  mounted() {
+    this.getUserId()
+  },
+
   methods: {
+    getUserId(){
+       const user = JSON.parse(localStorage.getItem('user'));
+
+       this.authUserId = user.id
+    },
+
     closeModal() {
       $("#editing-modal").modal("hide");
     },

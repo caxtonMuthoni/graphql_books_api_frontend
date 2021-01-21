@@ -11,6 +11,10 @@ query($id: ID!) {
     id
     name
   }
+  user{
+      id
+      name
+    }
   created_at
   
 }
