@@ -4,8 +4,8 @@
       class="navbar navbar-expand-lg navbar-dark bg-color fixed-top mb-0 justify-content-between"
     >
       <div class="container-fluid">
-        <a class="navbar-brand mr-auto" href="/"
-          ><i class="fas fa-book mr-3"></i>Books Home</a
+        <router-link class="navbar-brand mr-auto" to="/"
+          ><i class="fas fa-book mr-3"></i>Books Home</router-link
         >
         <button
           class="navbar-toggler"
@@ -33,13 +33,13 @@
           </ul>
           <ul v-else class="logged out navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/register">
-                <i class="fas fa-registered"></i> Register</a
+              <router-link class="nav-link" to="/register">
+                <i class="fas fa-registered"></i> Register</router-link
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login">
-                <i class="fas fa-lock"></i> Login</a
+              <router-link class="nav-link" to="/login">
+                <i class="fas fa-lock"></i> Login</router-link
               >
             </li>
           </ul>
